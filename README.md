@@ -1,12 +1,12 @@
-# CTFd Chat Notifier
+# CTFd Webhooks
 
-A small CTFd plugin to send notifications to Slack, Discord or Telegram about solves and admin announcements. Can be easily extended to support other platforms.
+A maintained fork of [CTFd_chat_notifier](https://github.com/krzys-h/CTFd_chat_notifier) to send announcements and challege solves to webhooks with predefined templates for Slack, Discord, and Telegram.
 
 ![Configuration screenshot](screenshot.png)
 
 ## Installation
 
-Clone this repo to `CTFd/plugins/CTFd_chat_notifier` in your CTFd installation directory and restart it. You should see the notifier settings in the admin panel.
+Clone this repo to `CTFd/plugins/CTFd-Webhooks` in your CTFd installation directory and restart it. You should see the notifier settings in the admin panel.
 
 Tested with CTFd 3.1.1.
 
