@@ -1,6 +1,6 @@
 # CTFd Webhooks
 
-A maintained fork of [CTFd_chat_notifier](https://github.com/krzys-h/CTFd_chat_notifier) to send announcements and challege solves to webhooks with predefined templates for Slack, Discord, and Telegram.
+A maintained fork of [CTFd_chat_notifier](https://github.com/krzys-h/CTFd_chat_notifier) to send announcements and challege solves to webhooks with predefined templates for Slack, Discord, N8N, and Telegram.
 
 ![Configuration screenshot](screenshot.png)
 
@@ -8,7 +8,7 @@ A maintained fork of [CTFd_chat_notifier](https://github.com/krzys-h/CTFd_chat_n
 
 Clone this repo to `CTFd/plugins/CTFd-Webhooks` in your CTFd installation directory and restart it. You should see the notifier settings in the admin panel.
 
-Tested with CTFd 3.1.1.
+Tested with CTFd 3.8.2.
 
 ## Extending
 
