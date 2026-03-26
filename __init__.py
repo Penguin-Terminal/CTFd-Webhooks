@@ -102,6 +102,41 @@ class DiscordNotifier(BaseNotifier):
             }]
         })
 
+class N8NNotifier(BaseNotifier):
+    def get_settings(self):
+        return ['notifier_n8n_webhook_url']
+    def get_webhook_url(self):
+        return get_config('notifier_n8n_webhook_url')
+    def is_configured(self):
+        return bool(self.get_webhook_url())
+
+    def notify_solve(self, format, solver_name, solver_url, challenge_name, challenge_url, solve_num):
+        info = {
+            'solver': {
+                'name': solver_name,
+                'url': solver_url
+            },
+            'challenge': {
+                'name': challenge_name,
+                'url': challenge_url
+            },
+            'solve_num': ordinalize(solve_num)
+        }
+
+        requests.post(self.get_webhook_url(), json={
+            'embeds': [{
+                'description': info,
+            }]
+        })
+
+    def notify_message(self, title, content):
+        requests.post(self.get_webhook_url(), json={
+            'embeds': [{
+                'title': title,
+                'description': content,
+            }]
+        })
+
 class TelegramNotifier(BaseNotifier):
     def get_settings(self):
         return ['notifier_telegram_bot_token', 'notifier_telegram_chat_id']
@@ -144,7 +179,7 @@ class TelegramNotifier(BaseNotifier):
 Global dictionary used to hold all the supported chat services. To add support for a new chat service, create a plugin and insert
 your BaseNotifier subclass instance into this dictionary to register it.
 """
-NOTIFIER_CLASSES = {"slack": SlackNotifier(), "discord": DiscordNotifier(), "telegram": TelegramNotifier()}
+NOTIFIER_CLASSES = {"slack": SlackNotifier(), "discord": DiscordNotifier(), "n8n": N8NNotifier(), "telegram": TelegramNotifier()}
 
 def get_configured_notifier():
     notifier_type = get_config('notifier_type')
