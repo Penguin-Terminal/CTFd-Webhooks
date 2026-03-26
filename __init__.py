@@ -123,18 +123,12 @@ class N8NNotifier(BaseNotifier):
             'solve_num': ordinalize(solve_num)
         }
 
-        requests.post(self.get_webhook_url(), json={
-            'embeds': [{
-                'description': info,
-            }]
-        })
+        requests.post(self.get_webhook_url(), json=info)
 
     def notify_message(self, title, content):
         requests.post(self.get_webhook_url(), json={
-            'embeds': [{
-                'title': title,
-                'description': content,
-            }]
+            'title': title,
+            'description': content,
         })
 
 class TelegramNotifier(BaseNotifier):
